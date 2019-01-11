@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <div>TODO write content</div>
+
+    <script>
+        var tab = [4, 5, 1, 8, 0, 7, 3];
+        var w;
+        if (window.Worker) {
+            w = new Worker("script/worker.js");
+            w.postMessage(tab);
+            w.onmessage = function (event) {
+                console.log(event.data);
+            };
+        }
+
+
+        function stopWorker() {
+            w.terminate();
+            w = undefined;
+        }
+    </script>
+</body>
+
+</html>
